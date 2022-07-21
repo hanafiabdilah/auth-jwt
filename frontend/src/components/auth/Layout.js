@@ -6,7 +6,14 @@ const Layout = (props) => {
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
-            <div className="column is-4">{props.form}</div>
+            <div className="column is-4">
+              {props.error && (
+                <article className="message is-danger">
+                  <div className="message-body">{props.error}</div>
+                </article>
+              )}
+              {props.form}
+            </div>
           </div>
         </div>
       </div>
