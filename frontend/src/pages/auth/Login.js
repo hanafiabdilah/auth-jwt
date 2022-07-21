@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from './../components/auth/Layout'
+import Layout from './../../components/auth/Layout'
 
 const Login = () => {
   return (
