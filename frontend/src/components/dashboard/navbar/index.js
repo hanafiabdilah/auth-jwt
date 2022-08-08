@@ -2,20 +2,25 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <nav
+      className="navbar is-light"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div className="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
+        <div className="navbar-brand">
+          <a className="navbar-item" href="https://bulma.io">
             <img
               src="https://bulma.io/images/bulma-logo.png"
               width="112"
               height="28"
+              alt=""
             />
           </a>
 
           <a
             role="button"
-            class="navbar-burger burger"
+            className="navbar-burger burger"
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"
@@ -26,14 +31,14 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">Home</a>
+        <div id="navbarBasicExample" className="navbar-menu">
+          <div className="navbar-start">
+            <a className="navbar-item">Home</a>
           </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-light">Logout</a>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <a className="button is-light">Logout</a>
               </div>
             </div>
           </div>
