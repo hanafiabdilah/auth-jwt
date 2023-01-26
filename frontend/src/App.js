@@ -2,9 +2,9 @@ import { createContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthProvider'
 import { Adminpanel } from './layouts/Adminpanel'
+import { Dashboard } from './pages/Adminpanel/Dashboard'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
-import Dashboard from './pages/dashboard/index'
 
 const AuthContext = createContext();
 
@@ -20,7 +20,7 @@ function App() {
           <Route element={<Adminpanel />}>
             <Route path="/adminpanel/*" element={
               <Routes>
-                <Route path="/dashboard" element={<>Adminpanel</>} />
+                <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
             } />
           </Route>

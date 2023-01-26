@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { useNavigate, useLocation, location } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth';
 
 import axios from '../../api/axios';
 import jwtDecode from 'jwt-decode';
-const LOGIN_URL = '/login';
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -21,9 +20,12 @@ const Login = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(LOGIN_URL, { email, password })
+      const response = await axios.post('/login',
+        { email, password, },
+        { withCredentials: true }
+      )
       const decode = jwtDecode(response?.data?.accessToken);
-      setAuth(decode);
+      setAuth({ ...decode, accessToken: response?.data?.accessToken });
       navigate(from, { replace: true })
     } catch (error) {
       setError(error.response.data.message)
