@@ -1,26 +1,30 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthProvider';
-import jwtDecode from 'jwt-decode';
+import React, { useState } from 'react'
+import { useNavigate, useLocation, location } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth';
 
 import axios from '../../api/axios';
+import jwtDecode from 'jwt-decode';
 const LOGIN_URL = '/login';
 
 const Login = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { setAuth } = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/adminpanel/dashboard';
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const navigate = useNavigate()
 
   const Login = async (e) => {
     e.preventDefault()
 
     try {
       const response = await axios.post(LOGIN_URL, { email, password })
-      const decode = jwtDecode(response?.data?.accessToken)
-      setUser(decode);
-      navigate('/dashboard')
+      const decode = jwtDecode(response?.data?.accessToken);
+      setAuth(decode);
+      navigate(from, { replace: true })
     } catch (error) {
       setError(error.response.data.message)
     }
