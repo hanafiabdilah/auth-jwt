@@ -29,9 +29,17 @@ export const Auth = () => {
         <>
             {!isLoading && (!auth?.email
                 ? (
-                    <div id="auth">
-                        <Outlet />
-                    </div>
+                    <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+                        <div className="hero-body">
+                            <div className="container">
+                                <div className="columns is-centered">
+                                    <div className="column is-4">
+                                        <Outlet />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 )
                 : <Navigate to="/adminpanel" state={{ from: location }} replace />)
             }

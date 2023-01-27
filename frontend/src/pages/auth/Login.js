@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth';
 
 import axios from '../../api/axios';
 import jwtDecode from 'jwt-decode';
+import { Alert } from '../../components/Alert';
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -34,7 +35,9 @@ const Login = () => {
 
   return (
     <form onSubmit={Login} className="box">
-      {error && error}
+      {error &&
+        <Alert type="error" message={error} />
+      }
       <div className="field">
         <label className="label">Email</label>
         <div className="controls">
@@ -59,6 +62,9 @@ const Login = () => {
       </div>
       <div className="field">
         <button className="button is-success is-fullwidth">Login</button>
+      </div>
+      <div>
+        Don't have account ? <Link to="/register">Register</Link>
       </div>
     </form>
   )
