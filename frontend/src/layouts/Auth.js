@@ -21,6 +21,8 @@ export const Auth = () => {
         }
 
         !auth?.accessToken ? verifyAccessToken() : setIsLoading(false);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
