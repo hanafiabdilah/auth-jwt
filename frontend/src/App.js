@@ -4,9 +4,9 @@ import { Adminpanel } from './layouts/Adminpanel'
 import { Auth } from './layouts/Auth'
 import { Dashboard } from './pages/adminpanel/Dashboard'
 import { User } from './pages/adminpanel/User'
+import { Home } from './pages/Home'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
-import { Home } from './pages/Home'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <AuthProvider>
         <Routes>
 
-          <Route path="/" element={<Home />} />
+          <Route path="/*" element={<Home />} />
 
           <Route element={<Auth />}>
             <Route path="/login" element={<Login />} />
@@ -24,7 +24,7 @@ function App() {
           <Route element={<Adminpanel />}>
             <Route path="/adminpanel/*" element={
               <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="/*" element={<Dashboard />} />
                 <Route path="/users" element={<User />} />
               </Routes>
             } />
