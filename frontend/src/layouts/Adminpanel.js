@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom"
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom"
+import axios from "../api/axios";
 import { useAuth } from "../hooks/useAuth"
 import { useRefreshToken } from "../hooks/useRefreshToken";
 
 export const Adminpanel = () => {
     const [isLoading, setIsLoading] = useState(true);
     const refresh = useRefreshToken();
-    const { auth } = useAuth();
+    const { auth, setAuth } = useAuth();
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const verifyAccessToken = async () => {
@@ -23,10 +25,15 @@ export const Adminpanel = () => {
         !auth?.accessToken ? verifyAccessToken() : setIsLoading(false);
     }, [])
 
-    useEffect(() => {
-        console.log('isloading', isLoading);
-        console.log('aT', auth?.accessToken);
-    }, [auth])
+    const handleLogout = async () => {
+        try {
+            await axios.delete('/logout', { withCredentials: true });
+            setAuth({})
+            navigate('/login')
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
 
     return (
@@ -34,6 +41,7 @@ export const Adminpanel = () => {
             {!isLoading && (auth?.email
                 ? (
                     <div id="adminpanel">
+                        <button onClick={handleLogout}>Logout</button>
                         <Outlet />
                     </div>
                 )

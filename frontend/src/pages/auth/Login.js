@@ -10,7 +10,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/adminpanel/dashboard';
+  const from = location.state?.from?.pathname || '/adminpanel';
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
