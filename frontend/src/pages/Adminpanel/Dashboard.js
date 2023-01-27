@@ -12,14 +12,9 @@ export const Dashboard = () => {
     useEffect(() => {
         let isMounted = true;
 
-        const controller = new AbortController();
-
         const getUsers = async () => {
             try {
-                const response = await axiosPrivate.get('/user', {
-                    signal: controller.signal
-                });
-                console.log(response.data);
+                const response = await axiosPrivate.get('/user');
                 isMounted && setUsers(response.data);
             } catch (error) {
                 console.error(error);
@@ -31,7 +26,6 @@ export const Dashboard = () => {
 
         return () => {
             isMounted = false;
-            controller.abort();
         }
     }, [])
 
