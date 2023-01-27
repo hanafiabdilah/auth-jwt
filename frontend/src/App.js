@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthProvider'
 import { Adminpanel } from './layouts/Adminpanel'
 import { Auth } from './layouts/Auth'
-import { Dashboard } from './pages/Adminpanel/Dashboard'
+import { Dashboard } from './pages/adminpanel/Dashboard'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 

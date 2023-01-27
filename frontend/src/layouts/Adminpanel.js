@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom"
-import axios from "../api/axios";
+import { Navigate, Outlet, useLocation } from "react-router-dom"
+import Navbar from "../components/adminpanel/Navbar";
 import { useAuth } from "../hooks/useAuth"
 import { useRefreshToken } from "../hooks/useRefreshToken";
 
 export const Adminpanel = () => {
     const [isLoading, setIsLoading] = useState(true);
     const refresh = useRefreshToken();
-    const { auth, setAuth } = useAuth();
+    const { auth } = useAuth();
     const location = useLocation();
-    const navigate = useNavigate();
 
     useEffect(() => {
         const verifyAccessToken = async () => {
@@ -27,24 +26,15 @@ export const Adminpanel = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const handleLogout = async () => {
-        try {
-            await axios.delete('/logout', { withCredentials: true });
-            setAuth({})
-            navigate('/login')
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-
     return (
         <>
             {!isLoading && (auth?.email
                 ? (
                     <div id="adminpanel">
-                        <button onClick={handleLogout}>Logout</button>
-                        <Outlet />
+                        <Navbar />
+                        <div className="container">
+                            <Outlet />
+                        </div>
                     </div>
                 )
                 : <Navigate to="/login" state={{ from: location }} replace />)
