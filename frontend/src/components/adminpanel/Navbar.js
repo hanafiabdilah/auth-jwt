@@ -34,8 +34,7 @@ const Navbar = () => {
                         />
                     </a>
 
-                    <a
-                        role="button"
+                    <button
                         className="navbar-burger burger"
                         aria-label="menu"
                         aria-expanded="false"
@@ -44,12 +43,13 @@ const Navbar = () => {
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
-                    </a>
+                    </button>
                 </div>
 
                 <div id="navbarBasicExample" className="navbar-menu">
                     <div className="navbar-start">
                         <Link to="/adminpanel" className="navbar-item">Home</Link>
+                        <Link to="/adminpanel/users" className="navbar-item">Users</Link>
                     </div>
                     <div className="navbar-end">
                         <div className="navbar-item">

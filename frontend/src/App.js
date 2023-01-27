@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthProvider'
 import { Adminpanel } from './layouts/Adminpanel'
 import { Auth } from './layouts/Auth'
 import { Dashboard } from './pages/adminpanel/Dashboard'
+import { User } from './pages/adminpanel/User'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/adminpanel/*" element={
               <Routes>
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/users" element={<User />} />
               </Routes>
             } />
           </Route>

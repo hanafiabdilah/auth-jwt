@@ -32,9 +32,11 @@ export const Adminpanel = () => {
                 ? (
                     <div id="adminpanel">
                         <Navbar />
-                        <div className="container">
-                            <Outlet />
-                        </div>
+                        <main className="hero">
+                            <div className="hero-body">
+                                <Outlet />
+                            </div>
+                        </main>
                     </div>
                 )
                 : <Navigate to="/login" state={{ from: location }} replace />)
