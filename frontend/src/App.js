@@ -6,12 +6,15 @@ import { Dashboard } from './pages/adminpanel/Dashboard'
 import { User } from './pages/adminpanel/User'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
+import { Home } from './pages/Home'
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
+
+          <Route path="/" element={<Home />} />
 
           <Route element={<Auth />}>
             <Route path="/login" element={<Login />} />
